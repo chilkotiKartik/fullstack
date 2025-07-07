@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@layer base {
+  /**
+   * Dark theme messaging app - using dark theme as default
+   */
+  :root {
+    --background: 210 11% 15%;
+    --foreground: 0 0% 100%;
+
+    --card: 210 11% 15%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 210 11% 15%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 174 100% 29%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 6% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 6% 25%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 174 100% 29%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 6% 25%;
+    --input: 210 6% 25%;
+    --ring: 174 100% 29%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-app-darker text-white font-sans h-full overflow-hidden;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  #root {
+    @apply h-full;
+  }
+}
+
+@layer components {
+  .mobile-container {
+    @apply max-w-sm md:max-w-md lg:max-w-4xl lg:flex mx-auto bg-app-darker min-h-screen relative overflow-hidden;
+  }
+
+  /* Large screen specific styles using regular CSS */
+  @media (min-width: 1024px) {
+    .mobile-container {
+      max-height: 90vh;
+      margin-top: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .status-bar {
+    @apply flex justify-between items-center px-6 py-2 text-white text-sm font-medium lg:hidden;
+  }
+
+  .keypad-button {
+    @apply w-16 h-16 md:w-20 md:h-20 rounded-full bg-keypad/20 flex items-center justify-center text-white text-xl md:text-2xl font-medium active:bg-keypad/30 transition-all duration-200 hover:bg-keypad/40 hover:scale-105;
+  }
+
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 lg:relative lg:border-t-0 lg:border-r lg:flex-col lg:justify-start lg:gap-4 lg:py-6 lg:w-20 bg-app-darker border-t border-app-dark flex items-center justify-around py-2;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 px-4 py-2 lg:px-2 lg:py-3 text-xs transition-all duration-200 hover:bg-app-dark/50 rounded-lg;
+  }
+
+  .nav-item.active {
+    @apply text-app-teal bg-app-teal/10;
+  }
+
+  .nav-item:not(.active) {
+    @apply text-app-gray hover:text-white;
+  }
+
+  /* Enhanced hover effects */
+  .chat-item {
+    @apply transition-all duration-200 hover:bg-app-dark/30 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .interactive-button {
+    @apply transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg;
+  }
+
+  .floating-button {
+    @apply transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:bg-app-dark/50 hover:shadow-lg hover:border-app-teal/20;
+  }
+
+  /* Desktop sidebar */
+  .desktop-sidebar {
+    @apply hidden lg:flex lg:flex-col lg:w-80 lg:border-r lg:border-app-dark lg:bg-app-darker;
+  }
+
+  .desktop-main {
+    @apply lg:flex-1 lg:flex lg:flex-col;
+  }
+
+  /* Skeleton loading animations */
+  .skeleton {
+    @apply animate-pulse bg-app-dark/50 rounded;
+  }
+
+  /* Message animations */
+  .message-enter {
+    @apply animate-in slide-in-from-bottom-2 fade-in duration-300;
+  }
+
+  .typing-indicator {
+    @apply animate-bounce;
+  }
+
+  /* Ripple effect */
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .ripple::before {
+    content: "";
+    @apply absolute inset-0 bg-white/10 scale-0 rounded-full transition-transform duration-300;
+  }
+
+  .ripple:active::before {
+    @apply scale-100;
+  }
+
+  /* Additional animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(32, 178, 170, 0.3);
+    }
+    50% {
+      box-shadow:
+        0 0 20px rgba(32, 178, 170, 0.6),
+        0 0 30px rgba(32, 178, 170, 0.4);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Beautiful gradient text animation */
+  .animate-gradient-text {
+    background: linear-gradient(-45deg, #20b2aa, #00ced1, #40e0d0, #48d1cc);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Slide in from bottom animation */
+  .animate-slide-in-bottom {
+    animation: slideInBottom 0.5s ease-out forwards;
+  }
+
+  @keyframes slideInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Chat item stagger animation */
+  .chat-item {
+    animation: slideInLeft 0.3s ease-out forwards;
+    opacity: 0;
+    animation-fill-mode: both;
+  }
+
+  /* Enhanced ripple effect */
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-effect::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s,
+      height 0.6s;
+  }
+
+  .ripple-effect:active::after {
+    width: 300px;
+    height: 300px;
+  }
+}
