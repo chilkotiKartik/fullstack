@@ -63,19 +63,12 @@ JWT Authentication
 
 bcrypt for password hashing
 
+
 🧪 Installation Guide
-1️⃣ Clone the Repository
-bash
-Copy
-Edit
+1️⃣ Clone the Repository  bash Copy  Edit
 git clone https://github.com/chilkotiKartik/fullstack.git
 cd fullstack
-2️⃣ Backend Setup
-bash
-Copy
-Edit
-cd server
-npm install
+
 Create a .env file in the server directory:
 env
 Copy
@@ -87,6 +80,8 @@ bash
 Copy
 Edit
 npm run dev
+
+
 3️⃣ Frontend Setup
 bash
 Copy
@@ -95,9 +90,7 @@ cd ../client
 npm install
 npm start
 🧪 Demo Credentials (Optional)
-bash
-Copy
-Edit
+
 Student Login:
 Email: student@test.com
 Password: student123
@@ -106,12 +99,8 @@ Admin Login:
 Email: admin@test.com
 Password: admin123
 
-⚖️ License
-This project is licensed under the MIT License.
 
-text
-Copy
-Edit
+
 © 2025 Kartik Chilkoti. All rights reserved.
 For commercial usage, please attribute the author or contact for licensing terms.
 
